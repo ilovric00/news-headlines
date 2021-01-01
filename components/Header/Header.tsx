@@ -1,14 +1,12 @@
-import Link from 'next/link'
+import Hyperlink from '../Hyperlink';
 
-const Header = () => {
-  return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a className="hover:underline">Blog</a>
-      </Link>
-      .
-    </h2>
-  )
-}
+const Header = () => (
+  <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
+    <Hyperlink href="/" AnchorProps={{ className: 'hover:underline' }}>
+      News Headlines
+    </Hyperlink>
+    .
+  </h2>
+);
 
-export default Header
+export default Header;
