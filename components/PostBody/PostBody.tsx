@@ -1,4 +1,4 @@
-import markdownStyles from './markdown-styles.module.scss'
+import markdownStyles from './PostBody.module.scss'
 
 type Props = {
   content: string
