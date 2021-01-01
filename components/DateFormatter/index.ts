@@ -1,3 +1,3 @@
-import Alert from './DateFormatter';
+import DateFormatter from './DateFormatter';
 
-export default Alert;
+export default DateFormatter;
