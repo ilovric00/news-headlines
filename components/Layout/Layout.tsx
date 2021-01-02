@@ -8,7 +8,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout = ({ preview, children }: Props) => (
+const Layout: React.FC<Props> = ({ preview, children }: Props) => (
   <>
     <Meta />
     <div className="min-h-screen">

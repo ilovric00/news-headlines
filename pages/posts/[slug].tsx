@@ -6,24 +6,24 @@ import PostBody from '../../components/PostBody';
 import Header from '../../components/Header';
 import PostHeader from '../../components/PostHeader';
 import Layout from '../../components/Layout';
-import { getPostBySlug, getAllPosts } from '../../lib/api';
+import { getArticleAndRelatedArticles, getFrontpageArticles } from '../../lib/api';
 import PostTitle from '../../components/PostTitle';
-import markdownToHtml from '../../lib/markdownToHtml';
-import PostType from '../../types/post';
+import Article from '../../types/article';
+import getSlugFromURL from '../../utils/getSlugFromURL';
+import RelatedArticles from '../../components/RelatedArticles';
 
 type Props = {
-  post: PostType;
-  // morePosts: PostType[];
-  preview?: boolean;
+  article: Article;
+  relatedArticles: Article[];
 };
 
-const Post = ({ post, preview }: Props) => {
+const Post = ({ article, relatedArticles }: Props) => {
   const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !article?.url) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         <Header />
         {router.isFallback ? (
@@ -32,14 +32,20 @@ const Post = ({ post, preview }: Props) => {
           <>
             <article className="mb-32">
               <Head>
-                <title>{post.title}| Blog Example</title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <title>{article.title}| Blog Example</title>
+                <meta property="og:image" content={article.urlToImage} />
               </Head>
-              <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
-              <PostBody content={post.content} />
+              <PostHeader
+                title={article.title}
+                coverImage={article.urlToImage}
+                date={article.publishedAt}
+                author={article.author}
+              />
+              <PostBody content={article.content} />
             </article>
           </>
         )}
+        <RelatedArticles articles={relatedArticles} />
       </Container>
     </Layout>
   );
@@ -54,26 +60,23 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage']);
-  const content = await markdownToHtml(post.content || '');
+  const { article, relatedArticles } = await getArticleAndRelatedArticles(params.slug);
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      article,
+      relatedArticles,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const allPosts = getAllPosts(['slug']);
+  const articles = await getFrontpageArticles();
 
   return {
-    paths: allPosts.map(posts => ({
+    paths: articles.map(posts => ({
       params: {
-        slug: posts.slug,
+        slug: getSlugFromURL(posts.url),
       },
     })),
     fallback: false,
