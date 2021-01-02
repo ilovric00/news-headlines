@@ -12,7 +12,7 @@ const Meta = () => (
     <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
     <meta name="theme-color" content="#000" />
     <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-    <meta name="description" content="A statically generated blog example." />
+    <meta name="description" content="Get breaking news headlines from all over the web." />
     <meta property="og:image" content="/logo/logo-sharing.png" />
   </Head>
 );
