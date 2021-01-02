@@ -19,7 +19,7 @@ const Index = ({ articles }: Props) => {
     <>
       <Layout>
         <Head>
-          <title>Blog Example</title>
+          <title>News Headlines</title>
         </Head>
         <Container>
           <Intro />
