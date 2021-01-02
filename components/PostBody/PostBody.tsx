@@ -1,4 +1,4 @@
-import markdownStyles from './PostBody.module.scss';
+import styles from './PostBody.module.scss';
 
 type Props = {
   content: string;
@@ -6,7 +6,7 @@ type Props = {
 
 const PostBody = ({ content }: Props) => (
   <div className="max-w-2xl mx-auto">
-    <div className={markdownStyles.markdown} dangerouslySetInnerHTML={{ __html: content }} />
+    <div className={styles.markdown}>{content}</div>
   </div>
 );
 

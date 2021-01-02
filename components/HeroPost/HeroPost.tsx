@@ -2,14 +2,13 @@ import Avatar from '../Avatar';
 import DateFormatter from '../DateFormatter';
 import CoverImage from '../CoverImage';
 import Hyperlink from '../Hyperlink';
-import Author from '../../types/author';
 
 type Props = {
   title: string;
   coverImage: string;
   date: string;
   excerpt: string;
-  author: Author;
+  author: string;
   slug: string;
 };
 
@@ -36,7 +35,7 @@ const HeroPost = ({ title, coverImage, date, excerpt, author, slug }: Props) => 
       </div>
       <div>
         <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-        <Avatar name={author.name} picture={author.picture} />
+        <Avatar name={author} />
       </div>
     </div>
   </section>

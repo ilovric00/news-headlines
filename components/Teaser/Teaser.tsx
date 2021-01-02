@@ -2,18 +2,17 @@ import Avatar from '../Avatar';
 import DateFormatter from '../DateFormatter';
 import CoverImage from '../CoverImage';
 import Hyperlink from '../Hyperlink';
-import Author from '../../types/author';
 
 type Props = {
   title: string;
   coverImage: string;
   date: string;
   excerpt: string;
-  author: Author;
+  author: string;
   slug: string;
 };
 
-const PostPreview = ({ title, coverImage, date, excerpt, author, slug }: Props) => (
+const Teaser = ({ title, coverImage, date, excerpt, author, slug }: Props) => (
   <div>
     <div className="mb-5">
       <CoverImage slug={slug} title={title} src={coverImage} />
@@ -32,8 +31,8 @@ const PostPreview = ({ title, coverImage, date, excerpt, author, slug }: Props) 
       <DateFormatter dateString={date} />
     </div>
     <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-    <Avatar name={author.name} picture={author.picture} />
+    <Avatar name={author} />
   </div>
 );
 
-export default PostPreview;
+export default Teaser;
