@@ -1,30 +1,29 @@
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
-import Container from '../../components/container'
-import PostBody from '../../components/post-body'
-import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
-import Layout from '../../components/layout'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
-import PostTitle from '../../components/post-title'
-import Head from 'next/head'
-import { CMS_NAME } from '../../lib/constants'
-import markdownToHtml from '../../lib/markdownToHtml'
-import PostType from '../../types/post'
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error';
+import Head from 'next/head';
+import Container from '../../components/Container';
+import PostBody from '../../components/PostBody';
+import Header from '../../components/Header';
+import PostHeader from '../../components/PostHeader';
+import Layout from '../../components/Layout';
+import { getArticleAndRelatedArticles, getFrontpageArticles } from '../../lib/api';
+import PostTitle from '../../components/PostTitle';
+import Article from '../../types/article';
+import getSlugFromURL from '../../utils/getSlugFromURL';
+import RelatedArticles from '../../components/RelatedArticles';
 
 type Props = {
-  post: PostType
-  morePosts: PostType[]
-  preview?: boolean
-}
+  article: Article;
+  relatedArticles: Article[];
+};
 
-const Post = ({ post, morePosts, preview }: Props) => {
-  const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
+const Post = ({ article, relatedArticles }: Props) => {
+  const router = useRouter();
+  if (!router.isFallback && !article?.url) {
+    return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         <Header />
         {router.isFallback ? (
@@ -33,67 +32,53 @@ const Post = ({ post, morePosts, preview }: Props) => {
           <>
             <article className="mb-32">
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <title>{article.title}| News Headlines</title>
+                <meta property="og:image" content={article.urlToImage} />
               </Head>
               <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
+                title={article.title}
+                coverImage={article.urlToImage}
+                date={article.publishedAt}
+                author={article.author}
               />
-              <PostBody content={post.content} />
+              <PostBody content={article.content} />
             </article>
           </>
         )}
+        <RelatedArticles articles={relatedArticles} />
       </Container>
     </Layout>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
 
 type Params = {
   params: {
-    slug: string
-  }
-}
+    slug: string;
+  };
+};
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'ogImage',
-    'coverImage',
-  ])
-  const content = await markdownToHtml(post.content || '')
+  const { article, relatedArticles } = await getArticleAndRelatedArticles(params.slug);
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      article,
+      relatedArticles,
     },
-  }
+  };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+  const articles = await getFrontpageArticles();
 
   return {
-    paths: posts.map((posts) => {
-      return {
-        params: {
-          slug: posts.slug,
-        },
-      }
-    }),
+    paths: articles.map(posts => ({
+      params: {
+        slug: getSlugFromURL(posts.url),
+      },
+    })),
     fallback: false,
-  }
+  };
 }
