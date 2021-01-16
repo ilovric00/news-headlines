@@ -77,16 +77,14 @@ _Builds the application for production usage._
 
 In addition several smaller libraries are used. Instructions on how to use them are linked below.
 
-| Library                                                 | Purpose                                                 |
-| ------------------------------------------------------- | ------------------------------------------------------- |
-| [date-fns](https://github.com/date-fns/date-fns)        | for manipulating JavaScript dates                       |
-| [PostCSS](https://github.com/postcss/postcss)           | for transforming styles with JS plugins                 |
-| [Tailwind](https://github.com/tailwindlabs/tailwindcss) | for rapidly building custom user interfaces             |
-| [Classnames](https://github.com/JedWatson/classnames)   | for conditionally joining classNames together           |
-| [ESLint](https://github.com/eslint/eslint)              | for making code more consistent and avoiding bugs       |
-| [Stylelint](https://github.com/stylelint/stylelint)     | for avoiding errors and enforcing conventions in styles |
-| [Prettier](https://github.com/prettier/prettier)        | for code formatting                                     |
-| [Husky](https://github.com/typicode/husky)              | for preventing bad commit or push                       |
+| Library                                               | Purpose                                                 |
+| ----------------------------------------------------- | ------------------------------------------------------- |
+| [date-fns](https://github.com/date-fns/date-fns)      | for manipulating JavaScript dates                       |
+| [Classnames](https://github.com/JedWatson/classnames) | for conditionally joining classNames together           |
+| [ESLint](https://github.com/eslint/eslint)            | for making code more consistent and avoiding bugs       |
+| [Stylelint](https://github.com/stylelint/stylelint)   | for avoiding errors and enforcing conventions in styles |
+| [Prettier](https://github.com/prettier/prettier)      | for code formatting                                     |
+| [Husky](https://github.com/typicode/husky)            | for preventing bad commit or push                       |
 
 See `package.json` for a complete overview.
 

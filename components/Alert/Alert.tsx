@@ -1,31 +1,29 @@
-import cn from 'classnames';
+import React from 'react';
 import Container from '../Container';
+import styles from './Alert.module.scss';
 
-type Props = {
+interface AlertProps {
   preview?: boolean;
-};
+}
 
-const Alert = ({ preview }: Props) => (
-  <div
-    className={cn('border-b', {
-      'bg-accent-7 border-accent-7 text-white': preview,
-      'bg-accent-1 border-accent-2': !preview,
-    })}
-  >
-    <Container>
-      <div className="py-2 text-center text-sm">
-        {preview ? (
-          <>
-            This page is a preview.
-            <a href="/api/exit-preview" className="underline hover:text-cyan duration-200 transition-colors">
-              Click here
-            </a>
-            to exit preview mode.
-          </>
-        ) : null}
-      </div>
-    </Container>
-  </div>
-);
+const Alert: React.FC<AlertProps> = ({ preview }) => {
+  if (!preview) {
+    return null;
+  }
+
+  return (
+    <div className={styles.container}>
+      <Container>
+        <div className={styles.text}>
+          This page is a preview.&nbsp;
+          <a href="/api/exit-preview" className={styles.link}>
+            Click here
+          </a>
+          &nbsp; to exit preview mode.
+        </div>
+      </Container>
+    </div>
+  );
+};
 
 export default Alert;

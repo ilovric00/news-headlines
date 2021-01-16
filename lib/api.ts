@@ -29,7 +29,9 @@ export async function getFrontpageArticles() {
     getCategoryArticles('technology'),
   ]);
 
-  return [...business, ...entertainment, ...general, ...health, ...science, ...sports, ...technology];
+  const allArticles = [...business, ...entertainment, ...general, ...health, ...science, ...sports, ...technology];
+
+  return allArticles.filter((v, i, a) => a.findIndex(t => t.url === v.url) === i);
 }
 
 export async function getArticleAndRelatedArticles(slug: string) {

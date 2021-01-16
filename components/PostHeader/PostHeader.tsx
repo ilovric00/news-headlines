@@ -2,6 +2,7 @@ import Avatar from '../Avatar';
 import DateFormatter from '../DateFormatter';
 import CoverImage from '../CoverImage';
 import PostTitle from '../PostTitle';
+import styles from './PostHeader.module.scss';
 
 type Props = {
   title: string;
@@ -13,17 +14,17 @@ type Props = {
 const PostHeader = ({ title, coverImage, date, author }: Props) => (
   <>
     <PostTitle>{title}</PostTitle>
-    <div className="hidden md:block md:mb-12">
+    <div className={styles.author}>
       <Avatar name={author} />
     </div>
-    <div className="mb-8 md:mb-16 sm:mx-0">
+    <div className={styles.coverImage}>
       <CoverImage title={title} src={coverImage} />
     </div>
-    <div className="max-w-2xl mx-auto">
-      <div className="block md:hidden mb-6">
+    <div className={styles.container}>
+      <div className={styles.author}>
         <Avatar name={author} />
       </div>
-      <div className="mb-6 text-lg">
+      <div className={styles.byline}>
         <DateFormatter dateString={date} />
       </div>
     </div>

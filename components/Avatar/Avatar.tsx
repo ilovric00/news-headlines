@@ -1,12 +1,14 @@
+import styles from './Avatar.module.scss';
+
 type Props = {
   name: string;
   picture?: string;
 };
 
 const Avatar = ({ name, picture }: Props) => (
-  <div className="flex items-center">
-    {picture && <img src={picture} className="w-12 h-12 rounded-full mr-4" alt={name} />}
-    <div className="text-xl font-bold">{name}</div>
+  <div className={styles.container}>
+    {picture && <img src={picture} className={styles.image} alt={name} />}
+    <div className={styles.name}>{name}</div>
   </div>
 );
 

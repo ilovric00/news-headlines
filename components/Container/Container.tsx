@@ -1,9 +1,10 @@
-import { ReactNode, FunctionComponent } from 'react';
+import React, { ReactNode } from 'react';
+import styles from './Container.module.scss';
 
-type Props = {
+interface ContainerProps {
   children?: ReactNode;
-};
+}
 
-const Container: FunctionComponent = ({ children }: Props) => <div className="container mx-auto px-5">{children}</div>;
+const Container: React.FC<ContainerProps> = ({ children }) => <div className={styles.container}>{children}</div>;
 
 export default Container;

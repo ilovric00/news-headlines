@@ -2,6 +2,7 @@ import Avatar from '../Avatar';
 import DateFormatter from '../DateFormatter';
 import CoverImage from '../CoverImage';
 import Hyperlink from '../Hyperlink';
+import styles from './HeroPost.module.scss';
 
 type Props = {
   title: string;
@@ -14,27 +15,27 @@ type Props = {
 
 const HeroPost = ({ title, coverImage, date, excerpt, author, slug }: Props) => (
   <section>
-    <div className="mb-8 md:mb-16">
+    <div className={styles.cover}>
       <CoverImage title={title} src={coverImage} slug={slug} />
     </div>
-    <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
+    <div className={styles.container}>
       <div>
-        <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+        <h3 className={styles.title}>
           <Hyperlink
             as={`/posts/${slug}`}
             href="/posts/[slug]"
             AnchorProps={{
-              className: 'hover:underline',
+              className: styles.link,
               dangerouslySetInnerHTML: { __html: title },
             }}
           />
         </h3>
-        <div className="mb-4 md:mb-0 text-lg">
+        <div className={styles.date}>
           <DateFormatter dateString={date} />
         </div>
       </div>
       <div>
-        <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+        <p className={styles.text}>{excerpt}</p>
         <Avatar name={author} />
       </div>
     </div>
