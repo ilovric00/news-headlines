@@ -1,3 +1,6 @@
+@import 'styles/utils/rem-calc.scss';
+@import 'styles/mixins/breakpoints.scss';
+
 .container {
   width: 100%;
   padding-left: 1.25rem;
@@ -5,19 +8,19 @@
   margin-left: auto;
   margin-right: auto;
 
-  @media (min-width: 640px) {
-    max-width: 640px;
+  @include media('sm') {
+    max-width: rem-calc(640);
   }
 
-  @media (min-width: 768px) {
-    max-width: 768px;
+  @include media('md') {
+    max-width: rem-calc(768);
   }
 
-  @media (min-width: 1024px) {
-    max-width: 1024px;
+  @include media('lg') {
+    max-width: rem-calc(1024);
   }
 
-  @media (min-width: 1280px) {
-    max-width: 1280px;
+  @include media('xl') {
+    max-width: $max-width;
   }
 }

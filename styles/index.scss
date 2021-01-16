@@ -1,16 +1,7 @@
+// Settings
 @import './settings/fonts';
 @import './settings/variables';
 
-body {
-  font-family: 'Poppins', sans-serif;
-}
-
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-a {
-  color: inherit;
-}
+// Globals
+@import './globals/reset';
+@import './globals/base';

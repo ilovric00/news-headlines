@@ -1,7 +1,9 @@
+@import 'styles/mixins/breakpoints.scss';
+
 .cover {
   margin-bottom: 2rem;
 
-  @media (min-width: 768px) {
+  @include media('md') {
     margin-bottom: 4rem;
   }
 }
@@ -9,7 +11,7 @@
 .container {
   margin-bottom: 5rem;
 
-  @media (min-width: 768px) {
+  @include media('md') {
     display: grid;
     margin-bottom: 7rem;
     grid-column-gap: 4rem;
@@ -17,7 +19,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  @media (min-width: 1024px) {
+  @include media('lg') {
     grid-column-gap: 2rem;
     column-gap: 2rem;
   }
@@ -33,7 +35,7 @@
       }
     }
 
-    @media (min-width: 1024px) {
+    @include media('lg') {
       font-size: 2.75rem;
     }
   }
@@ -42,7 +44,7 @@
     font-size: 1.125rem;
     margin-bottom: 1rem;
 
-    @media (min-width: 768px) {
+    @include media('md') {
       margin-bottom: 0;
     }
   }

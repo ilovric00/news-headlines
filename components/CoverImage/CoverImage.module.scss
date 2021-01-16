@@ -1,11 +1,14 @@
+@import 'styles/settings/variables.scss';
+@import 'styles/mixins/breakpoints.scss';
+
 .container {
-  @media (min-width: 640px) {
+  @include media('sm') {
     margin-left: 0;
     margin-right: 0;
   }
 
   .image {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: $box-shadow-image;
   }
 
   .thumbnail {
@@ -13,7 +16,7 @@
     transition-duration: 200ms;
 
     &:hover {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      box-shadow: $box-shadow-thumbnail;
     }
   }
 }

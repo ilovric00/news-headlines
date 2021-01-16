@@ -1,4 +1,5 @@
 @import 'styles/settings/variables.scss';
+@import 'styles/mixins/breakpoints.scss';
 
 .container {
   display: flex;
@@ -14,13 +15,13 @@
     letter-spacing: -0.04em;
     font-weight: 700;
 
-    @media (min-width: 768px) {
+    @include media('md') {
       padding-right: 2rem;
       font-size: 6.25rem;
     }
   }
 
-  @media (min-width: 768px) {
+  @include media('md') {
     margin-bottom: 3rem;
     justify-content: space-between;
     flex-direction: row;

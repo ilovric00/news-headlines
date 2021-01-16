@@ -1,7 +1,9 @@
 @import 'styles/settings/variables.scss';
+@import 'styles/utils/rem-calc.scss';
+@import 'styles/mixins/breakpoints.scss';
 
 .container {
-  border-top-width: 1px;
+  border-top-width: rem-calc(1);
   border-color: $grey-100;
   background-color: $grey-200;
 
@@ -12,7 +14,7 @@
     align-items: center;
     flex-direction: column;
 
-    @media (min-width: 1024px) {
+    @include media('lg') {
       flex-direction: row;
     }
 
@@ -22,7 +24,7 @@
       letter-spacing: -0.04em;
       line-height: 1.2;
 
-      @media (min-width: 1024px) {
+      @include media('lg') {
         width: 50%;
         text-align: left;
         padding-right: 1rem;
@@ -36,7 +38,7 @@
       align-items: center;
       flex-direction: column;
 
-      @media (min-width: 1024px) {
+      @include media('lg') {
         width: 50%;
         padding-left: 1rem;
         flex-direction: row;

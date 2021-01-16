@@ -1,3 +1,5 @@
+@import 'styles/utils/rem-calc.scss';
+
 .article {
   max-width: 42rem;
   margin-left: auto;
@@ -71,7 +73,7 @@
       padding: 1rem;
       font-size: 0.875rem;
       line-height: 1.2;
-      border-width: 1px;
+      border-width: rem-calc(1);
       border-color: #cbd5e0;
       background-color: #f7fafc;
     }
@@ -86,7 +88,7 @@
     }
 
     blockquote {
-      border-left-width: 4px;
+      border-left-width: rem-calc(4);
       border-color: #a0aec0;
       background-color: #edf2f7;
       font-style: italic;
