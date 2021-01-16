@@ -1,8 +1,9 @@
 import Hyperlink from '../Hyperlink';
+import styles from './Header.module.scss';
 
 const Header = () => (
-  <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-    <Hyperlink href="/" AnchorProps={{ className: 'hover:underline' }}>
+  <h2 className={styles.heading}>
+    <Hyperlink href="/" AnchorProps={{ className: styles.link }}>
       News Headlines
     </Hyperlink>
     .

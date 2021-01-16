@@ -5,8 +5,8 @@ type Props = {
 };
 
 const PostBody = ({ content }: Props) => (
-  <div className="max-w-2xl mx-auto">
-    <div className={styles.markdown}>{content}</div>
+  <div className={styles.article}>
+    <div className={styles.content}>{content}</div>
   </div>
 );
 
