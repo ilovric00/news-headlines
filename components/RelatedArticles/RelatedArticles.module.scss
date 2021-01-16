@@ -1,0 +1,34 @@
+.heading {
+  font-weight: 700;
+  font-size: 2.75rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  letter-spacing: -0.04em;
+
+  @media (min-width: 768px) {
+    font-size: 4.5rem;
+  }
+}
+
+.grid {
+  display: grid;
+  margin-bottom: 8rem;
+  grid-row-gap: 5rem;
+  row-gap: 5rem;
+  grid-column-gap: 4rem;
+  column-gap: 4rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @media (min-width: 768px) {
+    grid-column-gap: 4rem;
+    column-gap: 4rem;
+    grid-row-gap: 8rem;
+    row-gap: 8rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-column-gap: 8rem;
+    column-gap: 8rem;
+  }
+}

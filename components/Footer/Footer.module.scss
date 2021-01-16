@@ -1,0 +1,56 @@
+@import 'styles/settings/variables.scss';
+
+.container {
+  border-top-width: 1px;
+  border-color: $grey-100;
+  background-color: $grey-200;
+
+  .padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+    }
+
+    .text {
+      margin-bottom: 2.5rem;
+      text-align: center;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+
+      @media (min-width: 1024px) {
+        width: 50%;
+        text-align: left;
+        padding-right: 1rem;
+        margin-bottom: 0;
+      }
+    }
+
+    .column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      @media (min-width: 1024px) {
+        width: 50%;
+        padding-left: 1rem;
+        flex-direction: row;
+      }
+
+      .link {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        font-weight: 700;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import 'styles/settings/variables.scss';
+
+.container {
+  border-bottom-width: 1px;
+  border-color: $grey-800;
+  background-color: $grey-800;
+  color: $white;
+
+  .text {
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .link {
+    transition-duration: 200ms;
+    transition-property: background-color, border-color, color, fill, stroke;
+    text-decoration: underline;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+}

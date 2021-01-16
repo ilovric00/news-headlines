@@ -1,15 +1,16 @@
-@tailwind base;
+@import './settings/fonts';
+@import './settings/variables';
 
-/* Write your own custom base styles here */
+body {
+  font-family: 'Poppins', sans-serif;
+}
 
-/* Start purging... */
-@tailwind components;
-/* Stop purging. */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
 
-/* Write you own custom component styles here */
-
-/* Start purging... */
-@tailwind utilities;
-/* Stop purging. */
-
-/* Your own custom utilities */
+a {
+  color: inherit;
+}

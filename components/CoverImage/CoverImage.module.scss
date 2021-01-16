@@ -1,0 +1,19 @@
+.container {
+  @media (min-width: 640px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .image {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  .thumbnail {
+    transition-property: box-shadow;
+    transition-duration: 200ms;
+
+    &:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+  }
+}

@@ -2,6 +2,7 @@ import Avatar from '../Avatar';
 import DateFormatter from '../DateFormatter';
 import CoverImage from '../CoverImage';
 import Hyperlink from '../Hyperlink';
+import styles from './Teaser.module.scss';
 
 type Props = {
   title: string;
@@ -14,23 +15,23 @@ type Props = {
 
 const Teaser = ({ title, coverImage, date, excerpt, author, slug }: Props) => (
   <div>
-    <div className="mb-5">
+    <div className={styles.marginBottom}>
       <CoverImage slug={slug} title={title} src={coverImage} />
     </div>
-    <h3 className="text-3xl mb-3 leading-snug">
+    <h3 className={styles.title}>
       <Hyperlink
         as={`/posts/${slug}`}
         href="/posts/[slug]"
         AnchorProps={{
-          className: 'hover:underline',
+          className: styles.link,
           dangerouslySetInnerHTML: { __html: title },
         }}
       />
     </h3>
-    <div className="text-lg mb-4">
+    <div className={styles.date}>
       <DateFormatter dateString={date} />
     </div>
-    <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+    <p className={styles.author}>{excerpt}</p>
     <Avatar name={author} />
   </div>
 );

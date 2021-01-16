@@ -1,0 +1,41 @@
+.author {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    margin-bottom: 3rem;
+  }
+}
+
+.container {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  .author {
+    display: block;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .byline {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.coverImage {
+  margin-bottom: 2rem;
+
+  @media (min-width: 640px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 4rem;
+  }
+}

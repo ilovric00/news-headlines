@@ -1,0 +1,55 @@
+.cover {
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    margin-bottom: 4rem;
+  }
+}
+
+.container {
+  margin-bottom: 5rem;
+
+  @media (min-width: 768px) {
+    display: grid;
+    margin-bottom: 7rem;
+    grid-column-gap: 4rem;
+    column-gap: 4rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-column-gap: 2rem;
+    column-gap: 2rem;
+  }
+
+  .title {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-size: 2.25rem;
+
+    .link {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 2.75rem;
+    }
+  }
+
+  .date {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+
+  .text {
+    margin-bottom: 1rem;
+    line-height: 1.625;
+    font-size: 1.125rem;
+  }
+}

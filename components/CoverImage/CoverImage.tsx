@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import Hyperlink from '../Hyperlink';
+import styles from './CoverImage.module.scss';
 
 type Props = {
   title: string;
@@ -12,13 +13,13 @@ const CoverImage = ({ title, src, slug }: Props) => {
     <img
       src={src}
       alt={`Cover for ${title}`}
-      className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
+      className={cn(styles.image, {
+        [styles.thumbnail]: slug,
       })}
     />
   );
   return (
-    <div className="sm:mx-0">
+    <div className={styles.container}>
       {slug ? (
         <Hyperlink as={`/posts/${slug}`} href="/posts/[slug]" AnchorProps={{ 'aria-label': title }}>
           {image}
