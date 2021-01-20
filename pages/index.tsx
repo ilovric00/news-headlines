@@ -16,27 +16,25 @@ const Index = ({ articles }: Props) => {
   const heroArticle = articles.find(article => article.urlToImage);
   const moreArticles = articles.slice(1);
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>News Headlines</title>
-        </Head>
-        <Container>
-          <Intro />
-          {heroArticle && (
-            <HeroPost
-              title={heroArticle.title}
-              coverImage={heroArticle.urlToImage}
-              date={heroArticle.publishedAt}
-              author={heroArticle.author}
-              slug={getSlugFromURL(heroArticle.url)}
-              excerpt={heroArticle.description}
-            />
-          )}
-          <RelatedArticles articles={moreArticles} />
-        </Container>
-      </Layout>
-    </>
+    <Layout>
+      <Head>
+        <title>News Headlines</title>
+      </Head>
+      <Container>
+        <Intro />
+        {heroArticle && (
+          <HeroPost
+            title={heroArticle.title}
+            coverImage={heroArticle.urlToImage}
+            date={heroArticle.publishedAt}
+            author={heroArticle.author}
+            slug={getSlugFromURL(heroArticle.url)}
+            excerpt={heroArticle.description}
+          />
+        )}
+        <RelatedArticles articles={moreArticles} />
+      </Container>
+    </Layout>
   );
 };
 
