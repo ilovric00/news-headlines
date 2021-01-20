@@ -7,6 +7,16 @@
   border-color: $grey-100;
   background-color: $grey-200;
 
+  &.darkTheme {
+    background-color: $dark;
+    color: $white;
+
+    * {
+      background-color: $dark;
+      color: $white;
+    }
+  }
+
   .padding {
     padding-top: 7rem;
     padding-bottom: 7rem;
