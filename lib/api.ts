@@ -10,9 +10,9 @@ type ArticlesResult = {
 };
 
 export async function getCategoryArticles(category: Category) {
-  const { URL, ENDPOINT, DEFAULT_SORT } = NEWS_API;
+  const { URL, ENDPOINT, DEFAULT_COUNTRY, DEFAULT_SORT } = NEWS_API;
 
-  const url = `${URL}/${ENDPOINT}?category=${category}&sortBy=${DEFAULT_SORT}`;
+  const url = `${URL}/${ENDPOINT}?category=${category}&country=${DEFAULT_COUNTRY}&sortBy=${DEFAULT_SORT}`;
   const data = await fetchAPI<ArticlesResult>(url);
 
   return data.articles;
