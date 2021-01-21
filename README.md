@@ -6,6 +6,8 @@ Get breaking news headlines as they happen around the world. This simple app use
 
 ## Demo
 
+### [https://news.workspace.hr/](https://news.workspace.hr/)
+
 ![Demo](./public/demo.png)
 
 ---
