@@ -10,7 +10,7 @@ type Props = {
 const RelatedArticles = ({ articles }: Props) => {
   if (!articles.length) return null;
   return (
-    <section>
+    <section className={styles.container}>
       <h2 className={styles.heading}>Related articles</h2>
       <div className={styles.grid}>
         {articles.map(post => (
