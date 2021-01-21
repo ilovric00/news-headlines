@@ -14,5 +14,9 @@ export async function fetchAPI<T extends {}>(url: string): Promise<T> {
     throw new Error('Failed to fetch API');
   }
 
+  if (json.status === 'error') {
+    throw new Error(json.message);
+  }
+
   return json as T;
 }
