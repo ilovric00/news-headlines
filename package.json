@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "build:static": "next build && next export",
     "start": "next start",
     "lint:base": "eslint --ext .ts,.tsx ./",
     "lint:styles": "stylelint '**/*.scss' --fix",
