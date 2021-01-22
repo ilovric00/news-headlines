@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Container from '../Container';
+
 import styles from './Alert.module.scss';
 
 interface AlertProps {

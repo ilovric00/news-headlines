@@ -1,20 +1,26 @@
 import React from 'react';
 import cn from 'classnames';
-import { ThemeContextProvider } from '../../utils/context/ThemeContext';
+
 import Alert from '../Alert';
+import DocumentTitle from '../DocumentTitle';
 import Footer from '../Footer';
 import Meta from '../Meta';
+
+import { ThemeContextProvider } from '../../utils/context/ThemeContext';
+
 import styles from './Layout.module.scss';
 
-type Props = {
+interface LayoutProps {
   theme?: 'light' | 'dark';
+  title?: string;
   preview?: boolean;
   children: React.ReactNode;
-};
+}
 
-const Layout: React.FC<Props> = ({ theme = 'light', preview, children }: Props) => (
+const Layout: React.FC<LayoutProps> = ({ theme = 'light', title, preview, children }) => (
   <ThemeContextProvider value={{ theme }}>
     <Meta />
+    <DocumentTitle title={title} />
     <div className={cn(styles.container, { [styles.darkTheme]: theme === 'dark' })}>
       <Alert preview={preview} />
       <main>{children}</main>

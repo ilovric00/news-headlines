@@ -1,13 +1,16 @@
+import React from 'react';
+
 import Teaser from '../Teaser';
 import Article from '../../types/article';
 import getSlugFromURL from '../../utils/getSlugFromURL';
+
 import styles from './RelatedArticles.module.scss';
 
-type Props = {
+interface RelatedArticlesProps {
   articles: Article[];
-};
+}
 
-const RelatedArticles = ({ articles }: Props) => {
+const RelatedArticles: React.FC<RelatedArticlesProps> = ({ articles }) => {
   if (!articles.length) return null;
   return (
     <section className={styles.container}>

@@ -110,11 +110,19 @@ See `package.json` for a complete overview.
 │   │   ├── [param].tsx                        # dynamic page (route)
 │   │   └── index.tsx                          # page (route)
 │   ├── _app.tsx                               # custom App
-|   └── _document.tsx                          # custom Document
+│   ├── _document.tsx                          # custom Document
+│   └── index.tsx                              # home page
 ├── public                                     # place to store static files, like images
 ├── styles                                     # place to store global styles
+│   ├── globals                                # place for reset and base styling
+│   ├── mixins                                 # place to store all mixins
+│   ├── settings                               # place to store all fonts, colors, and breakpoints
+│   ├── utils                                  # place to store all utility functions for styling
+│   └── index.scss                             # styling entry point
 ├── types                                      # place to store all types
 └── utils                                      # place to store all utility functions that are shared across the app
+    ├── context                                # place to store all Context data
+    └── hooks                                  # place to store all custom Hooks
 
 ```
 

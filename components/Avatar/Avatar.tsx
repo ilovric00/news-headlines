@@ -1,11 +1,13 @@
+import React from 'react';
+
 import styles from './Avatar.module.scss';
 
-type Props = {
+interface AvatarProps {
   name: string;
   picture?: string;
-};
+}
 
-const Avatar = ({ name, picture }: Props) => (
+const Avatar: React.FC<AvatarProps> = ({ name, picture }) => (
   <div className={styles.container}>
     {picture && <img src={picture} className={styles.image} alt={name} />}
     <div className={styles.name}>{name}</div>

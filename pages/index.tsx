@@ -1,25 +1,26 @@
-import Head from 'next/head';
+import React from 'react';
+import { GetStaticProps } from 'next';
+
 import Container from '../components/Container';
-import RelatedArticles from '../components/RelatedArticles';
 import HeroPost from '../components/HeroPost';
 import Intro from '../components/Intro';
 import Layout from '../components/Layout';
-import { getFrontpageArticles } from '../lib/api';
+import RelatedArticles from '../components/RelatedArticles';
 import Article from '../types/article';
 import getSlugFromURL from '../utils/getSlugFromURL';
 
-type Props = {
-  articles: Article[];
-};
+import { getFrontpageArticles } from '../lib/api';
 
-const Index = ({ articles }: Props) => {
+interface FrontpageProps {
+  articles: Article[];
+}
+
+const Frontpage: React.FC<FrontpageProps> = ({ articles }) => {
   const heroArticle = articles.find(article => article.urlToImage);
   const moreArticles = articles.slice(1);
+
   return (
     <Layout>
-      <Head>
-        <title>News Headlines</title>
-      </Head>
       <Container>
         <Intro />
         {heroArticle && (
@@ -38,9 +39,9 @@ const Index = ({ articles }: Props) => {
   );
 };
 
-export default Index;
+export default Frontpage;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const articles = await getFrontpageArticles();
 
   return {

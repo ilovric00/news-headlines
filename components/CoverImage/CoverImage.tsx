@@ -1,14 +1,17 @@
+import React from 'react';
 import cn from 'classnames';
+
 import Hyperlink from '../Hyperlink';
+
 import styles from './CoverImage.module.scss';
 
-type Props = {
+interface CoverImageProps {
   title: string;
   src: string;
   slug?: string;
-};
+}
 
-const CoverImage = ({ title, src, slug }: Props) => {
+const CoverImage: React.FC<CoverImageProps> = ({ title, src, slug }) => {
   const image = (
     <img
       src={src}
