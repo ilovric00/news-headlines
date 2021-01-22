@@ -1,19 +1,22 @@
+import React from 'react';
+
 import Avatar from '../Avatar';
-import DateFormatter from '../DateFormatter';
 import CoverImage from '../CoverImage';
+import DateFormatter from '../DateFormatter';
 import Hyperlink from '../Hyperlink';
+
 import styles from './HeroPost.module.scss';
 
-type Props = {
+interface HeroPostProps {
   title: string;
   coverImage: string;
   date: string;
   excerpt: string;
   author: string;
   slug: string;
-};
+}
 
-const HeroPost = ({ title, coverImage, date, excerpt, author, slug }: Props) => (
+const HeroPost: React.FC<HeroPostProps> = ({ title, coverImage, date, excerpt, author, slug }) => (
   <section>
     <div className={styles.cover}>
       <CoverImage title={title} src={coverImage} slug={slug} />

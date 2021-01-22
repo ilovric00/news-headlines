@@ -1,17 +1,20 @@
+import React from 'react';
+
 import Avatar from '../Avatar';
-import DateFormatter from '../DateFormatter';
 import CoverImage from '../CoverImage';
+import DateFormatter from '../DateFormatter';
 import PostTitle from '../PostTitle';
+
 import styles from './PostHeader.module.scss';
 
-type Props = {
+interface PostHeaderProps {
   title: string;
   coverImage: string;
   date: string;
   author: string;
-};
+}
 
-const PostHeader = ({ title, coverImage, date, author }: Props) => (
+const PostHeader: React.FC<PostHeaderProps> = ({ title, coverImage, date, author }) => (
   <>
     <PostTitle>{title}</PostTitle>
     <div className={styles.author}>
