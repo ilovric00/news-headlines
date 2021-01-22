@@ -1,9 +1,13 @@
+import React from 'react';
 import cn from 'classnames';
-import { useTheme } from '../../utils/context/ThemeContext';
+
 import Container from '../Container';
+
+import { useTheme } from '../../utils/context/ThemeContext';
+
 import styles from './Footer.module.scss';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { theme } = useTheme();
 
   return (

@@ -1,10 +1,12 @@
+import React from 'react';
+
 import styles from './PostBody.module.scss';
 
-type Props = {
+interface PostBodyProps {
   content: string;
-};
+}
 
-const PostBody = ({ content }: Props) => (
+const PostBody: React.FC<PostBodyProps> = ({ content }) => (
   <div className={styles.article}>
     <div className={styles.content}>{content}</div>
   </div>

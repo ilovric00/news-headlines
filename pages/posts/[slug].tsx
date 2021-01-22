@@ -1,49 +1,53 @@
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
+import React from 'react';
 import Head from 'next/head';
+import ErrorPage from 'next/error';
+
+import { GetStaticProps, GetStaticPaths } from 'next';
+import { useRouter } from 'next/router';
+
 import Container from '../../components/Container';
-import PostBody from '../../components/PostBody';
 import Header from '../../components/Header';
-import PostHeader from '../../components/PostHeader';
 import Layout from '../../components/Layout';
-import { getArticleAndRelatedArticles, getFrontpageArticles } from '../../lib/api';
+import PostBody from '../../components/PostBody';
+import PostHeader from '../../components/PostHeader';
 import PostTitle from '../../components/PostTitle';
+import RelatedArticles from '../../components/RelatedArticles';
 import Article from '../../types/article';
 import getSlugFromURL from '../../utils/getSlugFromURL';
-import RelatedArticles from '../../components/RelatedArticles';
 
-type Props = {
+import { getArticleAndRelatedArticles, getFrontpageArticles } from '../../lib/api';
+
+interface PostProps {
   article: Article;
   relatedArticles: Article[];
-};
+}
 
-const Post = ({ article, relatedArticles }: Props) => {
+const Post: React.FC<PostProps> = ({ article, relatedArticles }) => {
   const router = useRouter();
+
   if (!router.isFallback && !article?.url) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
-    <Layout>
+    <Layout title={article?.title}>
       <Container>
         <Header />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{article.title}| News Headlines</title>
-                <meta property="og:image" content={article.urlToImage} />
-              </Head>
-              <PostHeader
-                title={article.title}
-                coverImage={article.urlToImage}
-                date={article.publishedAt}
-                author={article.author}
-              />
-              <PostBody content={article.content} />
-            </article>
-          </>
+          <article>
+            <Head>
+              <meta property="og:image" content={article.urlToImage} />
+            </Head>
+            <PostHeader
+              title={article.title}
+              coverImage={article.urlToImage}
+              date={article.publishedAt}
+              author={article.author}
+            />
+            <PostBody content={article.content} />
+          </article>
         )}
         <RelatedArticles articles={relatedArticles} />
       </Container>
@@ -59,7 +63,7 @@ type Params = {
   };
 };
 
-export async function getStaticProps({ params }: Params) {
+export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
   const { article, relatedArticles } = await getArticleAndRelatedArticles(params.slug);
 
   return {
@@ -68,9 +72,9 @@ export async function getStaticProps({ params }: Params) {
       relatedArticles,
     },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await getFrontpageArticles();
 
   return {
@@ -81,4 +85,4 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   };
-}
+};
